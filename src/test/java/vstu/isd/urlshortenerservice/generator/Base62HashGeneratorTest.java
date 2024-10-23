@@ -28,7 +28,7 @@ public class Base62HashGeneratorTest {
     Base62HashGenerator hashGenerator;
 
     @Test
-    void baseTest() {
+    void generateOneHash_commonValueNumber() {
         when(repository.getNextUniqueRange(1)).thenReturn(List.of(123L));
 
         String expected = "1z";

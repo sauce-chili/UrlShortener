@@ -28,7 +28,7 @@ public class Base62HashGeneratorTest {
     Base62HashGenerator hashGenerator;
 
     @Test
-    void generateOneHash_commonValueNumber() {
+    void generateOneHashcommonValueNumber() {
         when(repository.getNextUniqueRange(1)).thenReturn(List.of(123L));
 
         String expected = "1z";
@@ -37,7 +37,7 @@ public class Base62HashGeneratorTest {
     }
 
     @Test
-    void generateOneHash_NumberForHashIsLow() {
+    void generateOneHashNumberForHashIsLow() {
         when(repository.getNextUniqueRange(1)).thenReturn(List.of(1L));
 
         String expected = "1";
@@ -46,7 +46,7 @@ public class Base62HashGeneratorTest {
     }
 
     @Test
-    void generateOneHash_NumberForHashIsHigh() {
+    void generateOneHashNumberForHashIsHigh() {
         when(repository.getNextUniqueRange(1)).thenReturn(List.of(803407143574L));
 
         String expected = "E8xCUx4";

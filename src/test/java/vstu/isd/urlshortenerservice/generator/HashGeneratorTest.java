@@ -86,7 +86,6 @@ public class HashGeneratorTest {
 
 
         int expectedTotalUniqueHashes = tasksCount * hashCountPerTask;
-
         assertEquals(
                 expectedTotalUniqueHashes,
                 resultHashes.size(),

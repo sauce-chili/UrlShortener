@@ -33,13 +33,12 @@ spring:
     pool-exhaustion-percentage: 40 # in percent !!!
     generation-cron: 0 0 */6 * * * # every 6 hours
     generation-thread-pool-size: 4
+    hash-cache-size: 500
+    cache-exhaustion-percentage: 20 # in percent !!!
 
   cache:
     url-cache:
       ttl: 60 # in minute
-    url-hash-cache:
-      capacity: 1000
-      exhaustion-percentage: 20 # in percent !!!
 
   storage:
     url:

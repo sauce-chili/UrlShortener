@@ -12,14 +12,17 @@ public class HashesConfig {
     @Value("${spring.hashes.hash-pool-size}")
     private int hashPoolSize;
 
-    @Value("${spring.hashes.pool-exhaustion-percentage}")
-    private int exhaustionPercentage;
-
     @Value("${spring.hashes.generation-thread-pool-size}")
     private int generationThreadPoolSize;
 
     @Value("${spring.hashes.pool-exhaustion-percentage}")
     private int exhaustionPercentageExhaustion;
+
+    @Value("${spring.hashes.hash-cache-size}")
+    private int hashCacheSize;
+
+    @Value("${spring.hashes.cache-exhaustion-percentage}")
+    private int cacheExhaustionPercentage;
 
     @Bean
     public int HASH_POOL_SIZE() {
@@ -28,11 +31,21 @@ public class HashesConfig {
 
     @Bean
     public int EXHAUSTION_POOL_PERCENTAGE() {
-        return exhaustionPercentage;
+        return exhaustionPercentageExhaustion;
     }
 
     @Bean
     public ExecutorService hashGeneratorThreadPool() {
         return Executors.newFixedThreadPool(generationThreadPoolSize);
+    }
+
+    @Bean
+    public int hashCacheSize() {
+        return hashCacheSize;
+    }
+
+    @Bean
+    public int cacheExhaustionPercentage() {
+        return cacheExhaustionPercentage;
     }
 }

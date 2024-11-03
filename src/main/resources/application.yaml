@@ -28,17 +28,18 @@ spring:
       host: localhost
       connection_factory: jedis # `jedis` or `lettuce`
 
-  hash-generator:
-    max-generated-hashes: 2000 # must be equals `batch_size`
+  hashes:
+    hash-pool-size: 2000 # must be equals `batch_size`
+    pool-exhaustion-percentage: 40 # in percent !!!
     generation-cron: 0 0 */6 * * * # every 6 hours
-    thread-pool-size: 12
+    generation-thread-pool-size: 4
 
   cache:
     url-cache:
       ttl: 60 # in minute
     url-hash-cache:
       capacity: 1000
-      exhaustion-percentage: 20 # in percent !
+      exhaustion-percentage: 20 # in percent !!!
 
   storage:
     url:

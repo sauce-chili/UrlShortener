@@ -57,6 +57,15 @@ public class HashService {
             propagation = Propagation.REQUIRES_NEW
     )
     public void fillHashPoolIfNecessary() {
+        /*
+         * IMPORTANT:
+         * Concurrency locking is not used due to transaction isolation level `Isolation.SERIALIZABLE`,
+         * which embeds all transactions into an "order". When changing the isolation level, add race condition protection
+         *
+         * NOTE:
+         * There may be excessive waste of resources on connecting to the DB,
+         * in which case it is necessary to set a lock against concurrent invoke to this method.
+         * */
         int actualHashesCount = (int) hashRepository.count();
 
         if (isHashPoolExhausted(actualHashesCount)) {

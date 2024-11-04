@@ -53,7 +53,7 @@ public class LocalHashCache implements HashCache {
     @Override
     public String getHash() {
 
-        if (cacheExhausted()) {
+        if (isCacheExhausted()) {
             if (isFilling.compareAndExchange(false, true)) {
                 fillCacheAsync();
             }
@@ -69,7 +69,7 @@ public class LocalHashCache implements HashCache {
         return hash;
     }
 
-    private boolean cacheExhausted() {
+    private boolean isCacheExhausted() {
         return cache.size() <= CAPACITY * EXHAUSTION_PERCENTAGE;
     }
 

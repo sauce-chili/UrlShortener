@@ -41,8 +41,8 @@ public class HashService {
         if (hashes.size() < amount) {
             fillHashPoolIfNecessary();
 
-            int lackingAmount = amount - hashes.size();
-            hashes.addAll(hashRepository.popAll(lackingAmount));
+            int lacking = amount - hashes.size();
+            hashes.addAll(hashRepository.popAll(lacking));
         } else {
             fillHashPoolIfNecessaryAsync();
         }
